@@ -1,12 +1,10 @@
-import ItemListContainer from './components/ItemListContainer.jsx'
-import NavBar from './components/NavBar.jsx'
+import Routing from './components/router/routing.jsx'
 
 function App() {
 
   return (
     <>
-     <NavBar/>
-     <ItemListContainer message="Esta es mi primera entrega"/>
+     <Routing/>
     </>
   )
 }
