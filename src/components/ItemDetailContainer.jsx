@@ -1,8 +1,8 @@
 import React,{ useEffect, useState }  from 'react';
-import Layout from './Layout/Layout';
-import { getProduct } from '../helpers/getProducts';
+import Layout from './Layout/Layout.jsx';
+import { getProduct } from '../helpers/getProducts.jsx';
 import { useParams } from 'react-router-dom';
-import ItemDetail from './ItemDetail';
+import ItemDetail from './ItemDetail.jsx';
 
 const ItemDetailContainer = () => {
   const {id} = useParams();
