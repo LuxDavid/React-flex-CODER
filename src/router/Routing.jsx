@@ -1,8 +1,8 @@
 import React from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import Category from '../../views/Category.jsx';
-import Item from '../../views/Item.jsx';
-import ItemListContainer from '../ItemListContainer.jsx';
+import Category from '../views/Category.jsx';
+import Item from '../views/Item.jsx';
+import ItemListContainer from '../components/ItemListContainer.jsx';
 
 const Routing = () => {
   return (
