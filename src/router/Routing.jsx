@@ -1,8 +1,9 @@
 import React from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import Category from '../views/Category.jsx';
-import Item from '../views/Item.jsx';
 import ItemListContainer from '../components/ItemListContainer.jsx';
+import ItemDetailContainer from '../components/ItemDetailContainer.jsx';
+import Cart from '../components/Cart.jsx';
+import CheckoutForm from '../components/CheckoutForm.jsx';
 
 const Routing = () => {
   return (
@@ -10,9 +11,11 @@ const Routing = () => {
 
       <Routes>
 
-        <Route path='/' element={<ItemListContainer message="Esta es mi primera entrega"/>} />
-        <Route path='/category/:category' element={<Category />} />
-        <Route path='/item/:id' element={<Item />} />
+        <Route path='/' element={<ItemListContainer/>} />
+        <Route path='/category/:category' element={<ItemListContainer/>} />
+        <Route path='/item/:id' element={<ItemDetailContainer />} />
+        <Route path='/cart' element={<Cart/>}/>
+        <Route path='/checkout' element={<CheckoutForm/>} />
       </Routes>
 
     </BrowserRouter>

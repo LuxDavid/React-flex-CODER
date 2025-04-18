@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
+import ItemCount from './ItemCount.jsx';
 
 const ItemDetail = ({ product }) => {
 
@@ -15,17 +15,9 @@ const ItemDetail = ({ product }) => {
         <p>{product.description}</p>
         <p>{product.price}</p>
 
-        <div id="product-buttons">
+          <ItemCount/>
 
-          <button>-</button>
-          <span id="product-count">1</span>
-          <button>+</button>
-
-        </div>
-
-        <Button variant="outline-danger" className="addCart">Agregar al carrito</Button>
-
-        <span id="available-product">Disponible</span>
+        <span id="available-product">Disponible</span> 
 
       </div>
     </div>

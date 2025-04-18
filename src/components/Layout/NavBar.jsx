@@ -1,8 +1,14 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import CartWidget from '../CartWidget.jsx';
 import {Link} from "react-router-dom"; 
+import { useCart } from '../../context/cartContext.jsx';
+import { cartContext } from '../../context/cartContext.jsx';
 
 const NavBar = () => {
+
+    const {cart}= useCart();
+    // const {totalAmount} = useContext(cartContext);
+
   return (
 
     <div id='header'>
@@ -17,7 +23,7 @@ const NavBar = () => {
           <li><Link to="/category/Laptops" className='categorie'>Laptops</Link></li>
           <li><Link to="/category/tablets" className='categorie'>Tablets</Link></li>
           <li><Link to="/category/mobile-accessories" className='categorie'>Accesorios Movil</Link></li>
-          <li><Link to="/"><CartWidget /></Link></li>
+          <li><Link to="/cart"><CartWidget productsCart={cart}/></Link></li>
 
         </ul>
 
