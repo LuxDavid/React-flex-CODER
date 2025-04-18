@@ -1,20 +1,23 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import CartWidget from '../CartWidget.jsx';
 import {Link} from "react-router-dom"; 
 import { useCart } from '../../context/cartContext.jsx';
-import { cartContext } from '../../context/cartContext.jsx';
+import logo from '../../assets/logo.jpg';
+
 
 const NavBar = () => {
 
     const {cart}= useCart();
-    // const {totalAmount} = useContext(cartContext);
 
   return (
 
     <div id='header'>
       
       <div id='logo'>
-      <Link to="/" className='categorie'><span>Logo</span></Link>
+      <Link to="/" className='categorie'>
+      <img src={logo} alt="logo-web" title='logo-web' className='header__logo'/>
+      <span>VStore</span>
+      </Link>
       </div>
 
       <div id='navContainer'>
