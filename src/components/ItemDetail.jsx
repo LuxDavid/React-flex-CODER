@@ -1,7 +1,23 @@
-import React from 'react';
+import React, {useState, useContext} from 'react';
 import ItemCount from './ItemCount.jsx';
+import { CartContext } from '../context/cartContext.jsx';
 
 const ItemDetail = ({ product }) => {
+
+  const [count, setCount]= useState(1);
+
+  const {addProduct} = useContext(CartContext);
+
+  function handleCount(operation){
+    if(operation === "plus") setCount(count+1);
+    if(operation === "rest" && count >=2) setCount(count-1);
+  }
+
+  // function handlleAdd(){
+
+  //   addProduct(product,count);
+
+  // }
 
   return (
     <div id='container-detail'>
@@ -15,7 +31,7 @@ const ItemDetail = ({ product }) => {
         <p>{product.description}</p>
         <p>{product.price}</p>
 
-          <ItemCount/>
+          <ItemCount count={count} handleCount={handleCount} addProduct={addProduct} product={product} quantity={count}/>
 
         <span id="available-product">Disponible</span> 
 

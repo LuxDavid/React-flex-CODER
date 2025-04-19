@@ -22,8 +22,8 @@ const ItemDetailContainer = () => {
 
   return (
     <Layout>
-
-      <ItemDetail product={product} />
+    
+        <ItemDetail product={product} />
 
     </Layout>
   )

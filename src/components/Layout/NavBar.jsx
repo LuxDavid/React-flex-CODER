@@ -1,13 +1,9 @@
 import React from 'react';
 import CartWidget from '../CartWidget.jsx';
 import {Link} from "react-router-dom"; 
-import { useCart } from '../../context/cartContext.jsx';
 import logo from '../../assets/logo.jpg';
 
-
 const NavBar = () => {
-
-    const {cart}= useCart();
 
   return (
 
@@ -26,7 +22,7 @@ const NavBar = () => {
           <li><Link to="/category/Laptops" className='categorie'>Laptops</Link></li>
           <li><Link to="/category/tablets" className='categorie'>Tablets</Link></li>
           <li><Link to="/category/mobile-accessories" className='categorie'>Accesorios Movil</Link></li>
-          <li><Link to="/cart"><CartWidget productsCart={cart}/></Link></li>
+          <li><Link to="/cart"><CartWidget/></Link></li>
 
         </ul>
 

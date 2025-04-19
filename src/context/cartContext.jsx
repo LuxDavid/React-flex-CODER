@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState, useContext } from 'react';
 
-export const cartContext = createContext([]);
+export const CartContext = createContext([]);
 
 export const CartContextProvider = ({ children }) => {
 
@@ -27,12 +27,14 @@ export const CartContextProvider = ({ children }) => {
         return Boolean(cart.find((product) => product.item.id === productId));
     }
 
-    function addProduct(product, quantity) {
-        const added = isInCart(product.id);
+    function addProduct(item, quantity) {
+
+        const added = isInCart(item.id);
+
         if (added) {
             setCart((prevState) =>
                 prevState.map((productAdded) =>
-                    productAdded.item.id === product.id
+                    productAdded.item.id === item.id
                         ? {
                             ...productAdded,
                             quantityAdded: productAdded?.quantityAdded + quantity,
@@ -41,14 +43,13 @@ export const CartContextProvider = ({ children }) => {
                 )
             );
         } else {
-            setCart((prevState) =>
-                prevState.concat({ item, quantityAdded: quantity })
-            );
+            setCart((prevState) => [...prevState, { item, quantityAdded: quantity }]);
+
         }
     }
 
     return (
-        <cartContext.Provider value={{
+        <CartContext.Provider value={{
             cart,
             totalAmount,
             cleanCart,
@@ -57,11 +58,6 @@ export const CartContextProvider = ({ children }) => {
             addProduct,
         }}>
             {children}
-        </cartContext.Provider>
+        </CartContext.Provider>
     )
 }
-
-export const useCart = () => {
-    const context = useContext(cartContext);
-    return context;
-  }
