@@ -7,12 +7,12 @@ export const CartContextProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
     const [totalAmount, setTotalAmount] = useState(0);
 
-    // useEffect(() => {
-    //     const amount = cart
-    //         .map((product) => parseInt(product.item.price) * product.quantityAdded)
-    //         .reduce((partialSum, a) => partialSum + a, 0);
-    //     setTotalAmount(amount);
-    // }, [cart]);
+    useEffect(() => {
+        const amount = cart
+            .map((product) => parseInt(product.item.price) * product.quantityAdded)
+            .reduce((partialSum, a) => partialSum + a, 0);
+        setTotalAmount(amount);
+    }, [cart]);
 
     function removeProduct(productId) {
         cart((prevState) => prevState.filter((product) => product.item.id !== productId));

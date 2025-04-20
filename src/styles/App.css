@@ -52,7 +52,7 @@ body {
   font-size: 35px;
 }
 
-.header__logo{
+.header__logo {
   width: 70px;
   height: 65px;
   margin-right: 1rem;
@@ -141,7 +141,7 @@ body {
 
 #container-products,
 #container-detail,
-.form-container{
+.form-container {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
@@ -158,7 +158,6 @@ body {
   justify-content: center;
 }
 
-#container-cart,
 .checkout {
   display: flex;
   width: 100%;
@@ -289,9 +288,50 @@ body {
 
 }
 
+.table{
+  width: 60rem !important;
+}
+
+#table__delete{
+  width: 5rem;
+}
+
+#delete__icon{
+  color: red;
+  font-size: 18px;
+  text-align: center;
+}
+
+#delete__icon:hover{
+background-color: rgb(221, 77, 77);
+cursor: pointer;
+color: wheat;
+}
+
+#container-cart{
+  display: flex;
+  width: 100%;
+  height: 42rem;
+  flex-flow: column wrap;
+  align-items: center;
+}
+
+#container-total{
+  height: 80px;
+  width: 50rem;
+  background-color: #444;
+}
+
+#container-total p {
+  line-height: 5rem;
+  color: white;
+  font-size: 24px;
+  text-align: center;
+}
+
 /*------------------ CHECKOUT------------------------------*/
 
-.checkout__input{
+.checkout__input {
   width: 35rem;
   height: 3rem;
   border-radius: 1.5rem;
@@ -299,12 +339,12 @@ body {
   margin-bottom: 2rem;
 }
 
-.label__checkout{
+.label__checkout {
   color: white;
   font-size: 20px;
 }
 
-.checkout__button{
+.checkout__button {
   width: 20rem;
   height: 3rem;
   margin-bottom: 2rem;
@@ -314,7 +354,7 @@ body {
   color: white;
 }
 
-.checkout__button:hover{
+.checkout__button:hover {
   background-color: rgba(225, 225, 226, 0.8);
   border: 1px solid white;
   color: black;

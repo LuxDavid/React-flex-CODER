@@ -1,24 +1,52 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Layout from '../components/Layout/Layout.jsx'
 import EmptyCart from '../components/EmptyCart.jsx';
+import Table from 'react-bootstrap/Table';
+import { CartContext } from '../context/cartContext.jsx';
 
 const Cart = () => {
+
+    const {cart:items, totalAmount}= useContext(CartContext);
+
     return (
         <Layout>
 
             <div id='container-cart'>
-            <EmptyCart/>
-            </div>
 
-            {/* {carrito.length === 0 ? (<EmptyCart />)
+                {items.length === 0 ? (<EmptyCart />)
 
                 : (
-                    <div id='container-carrito'>
-                        {carrito.map((prod) => <ProductCart item={prod.item} quantity={prod.quantityAdded} />)}
-                    </div>
+                    <Table striped bordered hover>
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
+                            <th id='table__delete'></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {items.map(({item, quantityAdded}) => {
+                        return(
+                            <tr key={item.id}>
+                            <td>{item.title}</td>
+                            <td>${item.price}</td>
+                            <td>{quantityAdded}</td>
+                            <td id='delete__icon'>X</td>
+                        </tr>
+                        );
+                    })}
+                        
+                    </tbody>
+                </Table>
+
                 )}
 
-            <div id='container-total'></div> */}
+            <div id='container-total'>
+                <p>TOTAL: ${totalAmount} </p>
+            </div>
+
+            </div>
 
         </Layout>
     )

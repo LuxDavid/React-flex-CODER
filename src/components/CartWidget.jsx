@@ -5,7 +5,9 @@ import { CartContext } from '../context/cartContext.jsx';
 const CartWidget = () => {
 
   const {cart} = useContext(CartContext);
-  const count = cart.length;
+  const totalProducts= cart.reduce((sum, prod) => sum + prod.quantityAdded, 0);
+  let count = totalProducts;
+  
   return (
     <div id='cart-icon-container'>
       <img src={Cart} alt="Cart shop" title='Cart shop' className='cart-icon'/>
