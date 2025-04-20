@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import Layout from '../components/Layout/Layout.jsx'
 import EmptyCart from '../components/EmptyCart.jsx';
 import Table from 'react-bootstrap/Table';
@@ -6,7 +6,7 @@ import { CartContext } from '../context/cartContext.jsx';
 
 const Cart = () => {
 
-    const {cart:items, totalAmount}= useContext(CartContext);
+    const { cart: items, totalAmount, cleanCart } = useContext(CartContext);
 
     return (
         <Layout>
@@ -15,7 +15,7 @@ const Cart = () => {
 
                 {items.length === 0 ? (<EmptyCart />)
 
-                : (
+                    : ( <>
                     <Table striped bordered hover>
                     <thead>
                         <tr>
@@ -39,12 +39,17 @@ const Cart = () => {
                         
                     </tbody>
                 </Table>
-
-                )}
-
-            <div id='container-total'>
+                <div id='container-total'>
                 <p>TOTAL: ${totalAmount} </p>
-            </div>
+                </div>
+
+                    <div className='container__buttons'>
+                    <button id='button__cleanCart' onClick={cleanCart}>Limpiar Carrito</button>
+                    <button id='button__finish'>Terminar compra </button>
+                    </div>
+                    </>
+
+                    )}
 
             </div>
 

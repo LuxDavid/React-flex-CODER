@@ -329,6 +329,33 @@ color: wheat;
   text-align: center;
 }
 
+.container__buttons{
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+
+.container__buttons button{
+  margin-top: 2rem;
+  width: 24rem;
+  height: 3rem;
+  border-radius: 20px;
+}
+
+#button__cleanCart:hover{
+cursor: pointer;
+background-color: tomato;
+color: white;
+border: 1px solid white;
+}
+
+#button__finish:hover{
+  cursor: pointer;
+  background-color: rgb(81, 224, 81);
+  color: white;
+  border: 1px solid white;
+}
+
 /*------------------ CHECKOUT------------------------------*/
 
 .checkout__input {
