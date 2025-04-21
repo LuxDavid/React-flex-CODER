@@ -6,14 +6,14 @@ import { CartContext } from '../context/cartContext.jsx';
 
 const Cart = () => {
 
-    const { cart: items, totalAmount, cleanCart } = useContext(CartContext);
+    const { cart: items, totalAmount, cleanCart, removeProduct } = useContext(CartContext);
 
     return (
         <Layout>
 
             <div id='container-cart'>
 
-                {items.length === 0 ? (<EmptyCart />)
+                {(items.length === 0 && totalAmount  <= 0) ? (<EmptyCart />)
 
                     : ( <>
                     <Table striped bordered hover>
@@ -28,11 +28,11 @@ const Cart = () => {
                     <tbody>
                     {items.map(({item, quantityAdded}) => {
                         return(
-                            <tr key={item.id}>
-                            <td>{item.title}</td>
-                            <td>${item.price}</td>
+                            <tr key={item?.id}>
+                            <td>{item?.title}</td>
+                            <td>${item?.price}</td>
                             <td>{quantityAdded}</td>
-                            <td id='delete__icon'>X</td>
+                            <td id='delete__icon' onClick={()=> removeProduct(item?.id)}>X</td>
                         </tr>
                         );
                     })}
