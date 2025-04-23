@@ -3,10 +3,13 @@ import Layout from '../components/Layout/Layout.jsx'
 import EmptyCart from '../components/EmptyCart.jsx';
 import Table from 'react-bootstrap/Table';
 import { CartContext } from '../context/cartContext.jsx';
+import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
 
     const { cart: items, totalAmount, cleanCart, removeProduct } = useContext(CartContext);
+
+    const navigate= useNavigate();
 
     return (
         <Layout>
@@ -45,7 +48,7 @@ const Cart = () => {
 
                     <div className='container__buttons'>
                     <button id='button__cleanCart' onClick={cleanCart}>Limpiar Carrito</button>
-                    <button id='button__finish'>Terminar compra </button>
+                    <button id='button__finish' onClick={()=> navigate('/checkout')}>Terminar compra </button>
                     </div>
                     </>
 

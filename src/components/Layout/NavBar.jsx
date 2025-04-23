@@ -1,6 +1,6 @@
 import React from 'react';
 import CartWidget from '../CartWidget.jsx';
-import {Link} from "react-router-dom"; 
+import {Link, NavLink} from "react-router-dom"; 
 import logo from '../../assets/logo.jpg';
 
 const NavBar = () => {
@@ -18,11 +18,11 @@ const NavBar = () => {
 
       <div id='navContainer'>
         <ul id='menu'>
-          <li><Link to="/category/smartphones" className='categorie'>Celulares</Link></li>
-          <li><Link to="/category/Laptops" className='categorie'>Laptops</Link></li>
-          <li><Link to="/category/tablets" className='categorie'>Tablets</Link></li>
-          <li><Link to="/category/mobile-accessories" className='categorie'>Accesorios Movil</Link></li>
-          <li><Link to="/cart"><CartWidget/></Link></li>
+          <li><NavLink to="/category/smartphones" className='categorie'>Celulares</NavLink></li>
+          <li><NavLink to="/category/Laptops" className='categorie'>Laptops</NavLink></li>
+          <li><NavLink to="/category/tablets" className='categorie'>Tablets</NavLink></li>
+          <li><NavLink to="/category/mobile-accessories" className='categorie'>Accesorios Movil</NavLink></li>
+          <li><NavLink to="/cart"><CartWidget/></NavLink></li>
 
         </ul>
 

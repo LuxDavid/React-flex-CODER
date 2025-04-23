@@ -90,7 +90,11 @@ body {
   align-self: center;
 }
 
-#header #menu li a {
+#header #menu li .categorie.active{
+  color: rgb(224, 172, 74);
+}
+
+#header #menu li .categorie {
   color: white;
   text-decoration: none;
   transition: all 300ms;
