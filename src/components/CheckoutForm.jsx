@@ -2,10 +2,11 @@ import React, {useContext, useEffect} from 'react';
 import Layout from './Layout/Layout.jsx';
 import { CartContext } from '../context/cartContext.jsx';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const CheckoutForm = () => {
 
-    const { cart: items, totalAmount} = useContext(CartContext);
+    const { cart: items, totalAmount, cleanCart} = useContext(CartContext);
     const navigate= useNavigate();
 
     const validateCart= () => {
@@ -17,7 +18,7 @@ const CheckoutForm = () => {
         validateCart()
     }, []);
 
-    const finishSale = (e) => {
+    const finishSale = async (e) => {
         e.preventDefault();
 
         let data = e.target;
@@ -34,6 +35,14 @@ const CheckoutForm = () => {
 
         if( nameCheckout && emailCheckout && cellphoneCheckout){
             console.log(true);
+           await Swal.fire({
+                title: "Compra realiza con exito",
+                text: `Tu numero de compra es : 1`,
+                icon: "success"
+              });
+
+              cleanCart();
+              navigate('/')
         }else{
             console.log(false);
         }

@@ -23,10 +23,3 @@ export const getProduct = async (id) => {
 
     return data;
 }
-
-export const getCategories = async () => {
-
-    const request = await fetch('https://dummyjson.com/products/category-list');
-
-    const data = await request.json();
-}

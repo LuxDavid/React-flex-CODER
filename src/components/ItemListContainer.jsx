@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import Layout from './Layout/Layout.jsx';
-import { getProducts, getCategories } from '../helpers/getProducts.jsx';
 import ItemList from './ItemList.jsx';
 import { useParams } from 'react-router-dom';
+import { getItems } from '../firebase/database.js';
+import { useNavigate } from 'react-router-dom';
 
 const ItemListContainer = () => {
 
@@ -10,16 +11,20 @@ const ItemListContainer = () => {
 
   const [products, setProducts] = useState([]);
 
+   const navigate = useNavigate();
+
   const productsFiles = async () => {
 
-    const productN = await getProducts(category);
+       const productN = await getItems(category);
+        setProducts(productN);
+        if(productN.length === 0){
+          navigate('/');
+        }
 
-    setProducts(productN);
   }
 
   useEffect(() => {
     productsFiles();
-    getCategories();
   }, [category])
 
   return (

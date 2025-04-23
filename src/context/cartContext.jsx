@@ -1,4 +1,5 @@
-import { createContext, useEffect, useState, useContext } from 'react';
+import { createContext, useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 
 export const CartContext = createContext([]);
 
@@ -25,7 +26,7 @@ export const CartContextProvider = ({ children }) => {
                     productAdded.item.id === productId
                         ? {
                             ...productAdded,
-                            quantityAdded: productAdded?.quantityAdded -1 ,
+                            quantityAdded: productAdded?.quantityAdded - 1,
                         }
                         : productAdded
                 )
@@ -62,6 +63,17 @@ export const CartContextProvider = ({ children }) => {
         } else {
             setCart((prevState) => [...prevState, { item, quantityAdded: quantity }]);
         }
+
+        Swal.fire({
+            icon:'success',
+            title: 'Producto agregado',
+            position: 'top-end',
+            showConfirmButton: false,
+            toast: true,
+            timer: 1000,
+            background:'green',
+            color: "white"
+        })
     }
 
     return (

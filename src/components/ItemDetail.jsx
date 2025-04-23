@@ -13,20 +13,14 @@ const ItemDetail = ({ product }) => {
     if(operation === "rest" && count >=2) setCount(count-1);
   }
 
-  // function handlleAdd(){
-
-  //   addProduct(product,count);
-
-  // }
-
   return (
     <div id='container-detail'>
 
       <div id="detail-product" key={product.id}>
 
-        <img src={product.thumbnail} alt={product.title} />
+        <img src={product.thumbnail} alt={product.name} />
 
-        <h3>{product.title}</h3>
+        <h3>{product.name}</h3>
 
         <p>{product.description}</p>
         <p>{product.price}</p>

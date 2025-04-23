@@ -32,7 +32,7 @@ const Cart = () => {
                     {items.map(({item, quantityAdded}) => {
                         return(
                             <tr key={item?.id}>
-                            <td>{item?.title}</td>
+                            <td>{item?.name}</td>
                             <td>${item?.price}</td>
                             <td>{quantityAdded}</td>
                             <td id='delete__icon' onClick={()=> removeProduct(item?.id)}>X</td>
