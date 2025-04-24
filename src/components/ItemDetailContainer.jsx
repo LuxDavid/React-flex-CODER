@@ -16,9 +16,9 @@ const ItemDetailContainer = () => {
     setProduct(productInfo);
   }
 
+
   useEffect(() => {
-    productFile();
-    
+    productFile();    
   }, [id])
 
   return (

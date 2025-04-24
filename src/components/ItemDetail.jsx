@@ -1,6 +1,7 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, us} from 'react';
 import ItemCount from './ItemCount.jsx';
 import { CartContext } from '../context/cartContext.jsx';
+import { useGetItemImg } from '../firebase/database.js';
 
 const ItemDetail = ({ product }) => {
 
@@ -13,12 +14,14 @@ const ItemDetail = ({ product }) => {
     if(operation === "rest" && count >=2) setCount(count-1);
   }
 
+  const image= useGetItemImg(product.thumbnail);
+
   return (
     <div id='container-detail'>
 
       <div id="detail-product" key={product.id}>
 
-        <img src={product.thumbnail} alt={product.name} />
+        <img src={image} alt={product.name} />
 
         <h3>{product.name}</h3>
 
