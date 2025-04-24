@@ -21,17 +21,17 @@ const CheckoutForm = () => {
 
     const getTotalByProduct = (quantity, price) => {
         return quantity * price;
-      };
+    };
 
-    const createOrder= (buyer) => {
+    const createOrder = (buyer) => {
 
         const total = items
-        .map((product) =>
-          getTotalByProduct(product.quantityAdded, product.item.price)
-        )
-        .reduce((previousValue, currentValue) => previousValue + currentValue);
+            .map((product) =>
+                getTotalByProduct(product.quantityAdded, product.item.price)
+            )
+            .reduce((previousValue, currentValue) => previousValue + currentValue);
 
-        const order = {buyer,items:items,total:total};
+        const order = { buyer, items: items, total: total };
 
         return order
 
@@ -53,10 +53,10 @@ const CheckoutForm = () => {
 
         if (nameCheckout && emailCheckout && cellphoneCheckout) {
 
-            let buyer={ name:userData.name,  email:userData.email,  phone:userData.cellphone }
+            let buyer = { name: userData.name, email: userData.email, phone: userData.cellphone }
 
             return buyer
-        }else{
+        } else {
             return false;
         }
 
@@ -65,26 +65,24 @@ const CheckoutForm = () => {
     const finishSale = async (e) => {
         e.preventDefault();
 
-        const check= validateCheckout(e);
-        let order =null;
+        const check = validateCheckout(e);
+        let order = null;
 
-        if(check){
-            order= createOrder(check);
+        if (check) {
+            order = createOrder(check);
 
-            await updateItems(items, order);
+            const idSale=await updateItems(items, order);
 
             await Swal.fire({
                 title: "Compra realiza con exito",
-                text: `Tu numero de compra es : 1`,
+                text: `Tu id de compra es : ${idSale}`,
                 icon: "success"
-              });
-              cleanCart();
-              navigate('/')
-
+            });
+            cleanCart();
+            navigate('/')
         }
 
-       
-    } 
+    }
 
     return (
         <Layout>
@@ -93,15 +91,15 @@ const CheckoutForm = () => {
                 <form className='checkout' onSubmit={finishSale}>
 
                     <label for="nombre" className='label__checkout'>Nombre</label>
-                    <input type="text" name='name' placeholder='Ingresa tu nombre completo' className='checkout__input' />
+                    <input type="text" name='name' placeholder='Ingresa tu nombre completo' className='checkout__input' value="Brayan David" />
 
                     <label for="email" className='label__checkout'>Email</label>
-                    <input type="email" name='email' placeholder='Ingresa tu correo electronico' className='checkout__input' />
+                    <input type="email" name='email' placeholder='Ingresa tu correo electronico' className='checkout__input' value="adminCoder@coder.com" />
 
                     <label for="cellphone" className='label__checkout'>Telefono</label>
-                    <input type="text" name='cellphone' placeholder='Ingresa tu numero de telefono' className='checkout__input' />
+                    <input type="text" name='cellphone' placeholder='Ingresa tu numero de telefono' className='checkout__input' value="3335034020" />
 
-                    <input type="submit" value="Terminar compra" className='checkout__button'/>
+                    <input type="submit" value="Terminar compra" className='checkout__button' />
                 </form>
 
             </div>

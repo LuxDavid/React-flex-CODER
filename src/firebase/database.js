@@ -56,7 +56,7 @@ export const useGetItemImg = (productImg) => {
 
                 setImgUrl(url);
             } catch (error) {
-                console.error("Error al obtener la imagen:", error);
+                return error
             }
         };
 
@@ -69,7 +69,7 @@ export const useGetItemImg = (productImg) => {
 export const updateItems = async (items, order) => {
 
     const orderCollection = collection(db, "orders");
-    await addDoc(orderCollection, order);
+    const orderSale=await addDoc(orderCollection, order);
 
     for (const element of items) {
 
@@ -79,4 +79,6 @@ export const updateItems = async (items, order) => {
         };
         await updateDoc(itemRef, dataToUpdate);
     }
+
+    return orderSale.id
 }
