@@ -1,4 +1,4 @@
-import { getFirestore, getDocs, collection, doc, getDoc, query, where } from 'firebase/firestore';
+import { getFirestore, getDocs, collection, doc, getDoc, query, where, updateDoc, addDoc } from 'firebase/firestore';
 import { getDownloadURL, getStorage, ref } from "firebase/storage";
 import { app } from './config.js';
 import { useEffect, useState } from "react";
@@ -41,19 +41,19 @@ export const getItem = async (id) => {
 
 }
 
-export const useGetItemImg  =  (productImg) => {
+export const useGetItemImg = (productImg) => {
     const [imgUrl, setImgUrl] = useState(null);
 
     useEffect(() => {
-        if (!productImg) return; 
+        if (!productImg) return;
 
         const fetchImage = async () => {
             try {
                 const storage = getStorage();
-                const imgRef = ref(storage, productImg); 
-                
+                const imgRef = ref(storage, productImg);
+
                 const url = await getDownloadURL(imgRef);
-            
+
                 setImgUrl(url);
             } catch (error) {
                 console.error("Error al obtener la imagen:", error);
@@ -65,3 +65,18 @@ export const useGetItemImg  =  (productImg) => {
 
     return imgUrl;
 };
+
+export const updateItems = async (items, order) => {
+
+    const orderCollection = collection(db, "orders");
+    await addDoc(orderCollection, order);
+
+    for (const element of items) {
+
+        const itemRef = doc(db, "items", element.item.id);
+        const dataToUpdate = {
+            stock: element.item.stock - element.quantityAdded,
+        };
+        await updateDoc(itemRef, dataToUpdate);
+    }
+}

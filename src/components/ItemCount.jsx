@@ -1,8 +1,8 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 
+const ItemCount = ({count, handleCount, addProduct, product, quantity, stock}) => {
 
-const ItemCount = ({count, handleCount, addProduct, product, quantity}) => {
   return (
     <>
       <div id="product-buttons">
@@ -13,7 +13,7 @@ const ItemCount = ({count, handleCount, addProduct, product, quantity}) => {
 
       </div>
 
-      <Button variant="outline-danger" className="addCart" onClick={()=> addProduct(product, quantity)}>Agregar al carrito</Button>
+      <Button variant="outline-danger" className="addCart" disabled={stock === 0} onClick={()=> addProduct(product,quantity)}>Agregar al carrito</Button>
     </>
   )
 }

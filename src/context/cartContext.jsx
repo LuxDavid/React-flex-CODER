@@ -52,7 +52,7 @@ export const CartContextProvider = ({ children }) => {
         if (added) {
             setCart((prevState) =>
                 prevState.map((productAdded) =>
-                    productAdded.item.id === item.id
+                    productAdded.item.id === item.id  
                         ? {
                             ...productAdded,
                             quantityAdded: productAdded?.quantityAdded + quantity,

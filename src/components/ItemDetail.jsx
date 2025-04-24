@@ -1,4 +1,4 @@
-import React, {useState, useContext, us} from 'react';
+import React, {useState, useContext} from 'react';
 import ItemCount from './ItemCount.jsx';
 import { CartContext } from '../context/cartContext.jsx';
 import { useGetItemImg } from '../firebase/database.js';
@@ -10,7 +10,7 @@ const ItemDetail = ({ product }) => {
   const {addProduct} = useContext(CartContext);
 
   function handleCount(operation){
-    if(operation === "plus") setCount(count+1);
+    if(operation === "plus" && count < product.stock) setCount(count+1);
     if(operation === "rest" && count >=2) setCount(count-1);
   }
 
@@ -27,10 +27,10 @@ const ItemDetail = ({ product }) => {
 
         <p>{product.description}</p>
         <p>{product.price}</p>
+        
+          <ItemCount count={count} handleCount={handleCount} addProduct={addProduct} product={product} quantity={count} stock={product.stock}/>
 
-          <ItemCount count={count} handleCount={handleCount} addProduct={addProduct} product={product} quantity={count}/>
-
-        <span id="available-product">Disponible</span> 
+        <span id="available-product">Stock Disponible: {product.stock}</span> 
 
       </div>
     </div>
